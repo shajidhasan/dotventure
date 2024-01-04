@@ -12,8 +12,9 @@ const k = kaboom({
     backgroundAudio: true,
     stretch: false,
     crisp: true,
+    font: 'kitchen_sink',
     height,
-    width
+    width,
 })
 
 k.volume(0.4)

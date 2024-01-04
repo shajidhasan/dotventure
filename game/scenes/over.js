@@ -1,30 +1,72 @@
 import k from "../kaboom"
+import { pb } from "../pocketbase"
 
-k.scene("over", (score) => {
+k.scene("over", (score, topScores) => {
     k.play('game_over')
 
-    let locked = true
-    k.wait(1, () => {
-        locked = false
-    })
-
-    k.onMousePress(() => {
-        if (!locked) {
-            k.go('game')
-        }
-    })
+    pb.collection('scores').create({ name: localStorage.getItem('dotname') ?? "Anonymous", score: score });
 
     k.add([
-        k.text("GAME OVER", { font: 'kitchen_sink', size: 40, align: 'center' }),
-        k.pos(k.center().sub(k.vec2(0, 80))),
+        k.text("GAME OVER", { size: 40, align: 'center' }),
+        k.pos(k.center().sub(k.vec2(0, 250))),
         k.color([85, 85, 85]),
         k.anchor('center')
     ])
 
     k.add([
-        k.text(`SCORE: ${score}`, { font: 'kitchen_sink', size: 20, align: 'center' }),
-        k.pos(k.center()),
+        k.text(`SCORE: ${score}`, { size: 20, align: 'center' }),
+        k.pos(k.center().sub(k.vec2(0, 200))),
         k.color([85, 85, 85]),
         k.anchor('center')
     ])
+
+    k.add([
+        k.text("LEADERBOARD", { size: 14, align: 'center' }),
+        k.pos(k.center().sub(k.vec2(0, 140))),
+        k.color([85, 85, 85]),
+        k.anchor('center')
+    ])
+
+    topScores.push({ name: localStorage.getItem('dotname') ?? 'Anonymous', score: score, current: true })
+    topScores.sort((a, b) => b.score - a.score)
+
+    let left = k.vec2(40, k.height() / 2 - 100)
+    let right = k.vec2(k.width() - 40, k.height() / 2 - 100)
+
+    topScores.forEach(t => {
+        k.add([
+            text(t.name, { size: 15, align: 'left' }),
+            k.color(t.current ? [228, 30, 99] : [85, 85, 85]),
+            k.anchor('left'),
+            k.pos(left)
+        ])
+
+        k.add([
+            text(t.score, { size: 15, align: 'right' }),
+            k.color(t.current ? [228, 30, 99] : [85, 85, 85]),
+            k.anchor('right'),
+            k.pos(right)
+        ])
+
+        left = left.add(k.vec2(0, 40))
+        right = right.add(k.vec2(0, 40))
+    })
+
+    const button = k.add([
+        k.rect(120, 40),
+        k.anchor('center'),
+        k.area(),
+        k.color([228, 30, 99]),
+        k.pos(k.center().add(k.vec2(0, 250)))
+    ])
+
+    button.add([
+        k.text("HOME", { size: 16 }),
+        k.pos(0),
+        k.anchor('center')
+    ])
+
+    button.onClick(() => {
+        k.go('start')
+    })
 })
