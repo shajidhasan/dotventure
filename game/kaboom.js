@@ -17,6 +17,7 @@ const k = kaboom({
     width,
 })
 
+k.debug.inspect = true
 k.volume(0.4)
 
 export default k

@@ -59,11 +59,16 @@ k.scene("start", () => {
     ])
 
     const begin = k.add([
-        k.text("TAP HERE TO BEGIN", { font: 'kitchen_sink', size: 25 }),
+        k.pos(k.center().add(0, 240)),
+        k.area({ shape: new k.Rect(k.vec2(0), k.width() - 10, k.height() / 2 - 240 - 10) }),
+        k.anchor('top')
+    ])
+
+    const beginText = begin.add([
+        k.text("TAP HERE TO BEGIN", { font: 'kitchen_sink', size: 18 }),
         k.color([85, 85, 85]),
-        k.pos(k.center().add(0, 250)),
-        k.anchor('center'),
-        k.area(),
+        k.pos(k.vec2(0, 20)),
+        k.anchor('top'),
         k.opacity(1),
         { blinkTimer: 0 },
     ])
@@ -71,12 +76,12 @@ k.scene("start", () => {
     begin.onClick(() => {
         k.go('game')
     })
-    begin.onUpdate(() => {
-        begin.blinkTimer += k.dt();
+    beginText.onUpdate(() => {
+        beginText.blinkTimer += k.dt();
 
-        if (begin.blinkTimer >= 0.5) {
-            begin.opacity = (begin.opacity === 1) ? 0 : 1;
-            begin.blinkTimer = 0;
+        if (beginText.blinkTimer >= 0.5) {
+            beginText.opacity = (beginText.opacity === 1) ? 0 : 1;
+            beginText.blinkTimer = 0;
         }
     })
 
