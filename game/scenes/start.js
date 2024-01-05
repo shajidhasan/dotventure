@@ -4,7 +4,7 @@ k.scene("start", () => {
     k.setGravity(600)
 
     const dot = k.add([
-        k.rect(80, 80),
+        k.rect(60, 60),
         k.color([228, 30, 99]),
         k.pos(k.center().sub(0, 300)),
         k.anchor('center'),
@@ -13,7 +13,7 @@ k.scene("start", () => {
     ])
 
     const platform = k.add([
-        k.rect(300, 50),
+        k.rect(240, 40),
         k.color([72, 79, 180]),
         k.pos(k.center().sub(0, 100)),
         k.anchor('top'),
@@ -22,7 +22,7 @@ k.scene("start", () => {
     ])
 
     platform.add([
-        k.text("DOTVENTURE", { size: 40 }),
+        k.text("DOTVENTURE", { size: 30 }),
         k.color([85, 85, 85]),
         k.pos(0),
         k.anchor('bot')
@@ -52,7 +52,7 @@ k.scene("start", () => {
     })
 
     k.add([
-        k.text("Touch controls:\nBottom half of the screen to move.\nTap on the top half to rocket jump.", { size: 13.5 }),
+        k.text("Touch controls:\nBottom half of the screen to move.\nTap on the top half to rocket jump.", { size: 12 }),
         k.pos(k.center().add(k.vec2(0, 100))),
         k.anchor('top'),
         k.color([85, 85, 85]),
