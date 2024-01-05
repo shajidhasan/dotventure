@@ -1,10 +1,10 @@
 import kaboom from "kaboom"
 
-let height, width
+let width, height
 
-if (window.innerHeight / window.innerWidth < 1) {
+if (window.innerWidth > 450) {
+    width = 450
     height = window.innerHeight
-    width = height / 1.5
 }
 
 const k = kaboom({
@@ -13,11 +13,12 @@ const k = kaboom({
     stretch: false,
     crisp: true,
     font: 'kitchen_sink',
-    height,
+    pixelDensity: window.devicePixelRatio / 2,
+    debug: false,
     width,
+    height,
 })
 
-k.debug.inspect = true
 k.volume(0.4)
 
 export default k
