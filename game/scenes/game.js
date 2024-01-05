@@ -49,7 +49,7 @@ k.scene("game", () => {
         }
     })
 
-    let topScorers = []
+    let topScorers = null
 
     pb.collection('scores').getList(1, 7, {
         sort: '-score',
