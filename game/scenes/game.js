@@ -56,6 +56,8 @@ k.scene("game", () => {
         filter: 'created >= @todayStart && created < @todayEnd'
     }).then(data => {
         topScorers = data.items
+    }).catch(e => {
+        console.log("Could not load leaderboard!")
     })
 
 

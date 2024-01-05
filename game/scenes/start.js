@@ -1,12 +1,12 @@
 import k, { MAX_WIDTH } from "../kaboom"
 
 k.scene("start", () => {
-    k.setGravity(1200)
+    k.setGravity(800)
 
     const dot = k.add([
         k.rect(60, 60),
         k.color([228, 30, 99]),
-        k.pos(k.center().sub(90, 300)),
+        k.pos(k.center().sub(90, 600)),
         k.anchor('center'),
         k.area(),
         k.body()
@@ -15,7 +15,7 @@ k.scene("start", () => {
     const platform = k.add([
         k.rect(300, 40),
         k.color([72, 79, 180]),
-        k.pos(k.center().sub(0, 100)),
+        k.pos(k.center().sub(0, 140)),
         k.anchor('top'),
         k.area(),
         k.body({ isStatic: true })
@@ -31,14 +31,14 @@ k.scene("start", () => {
     k.add([
         k.text("Your name:", { size: 14 }),
         k.color([85, 85, 85]),
-        k.pos(k.center()),
+        k.pos(k.center().sub(0, 40)),
         k.anchor('center')
     ])
 
     const name = k.add([
         k.text(localStorage.getItem('dotname') ?? "Anonymous", { size: 20 }),
         k.color([228, 30, 99]),
-        k.pos(k.center().add(0, 30)),
+        k.pos(k.center()),
         k.anchor('center'),
         k.area(),
     ])
@@ -59,7 +59,7 @@ k.scene("start", () => {
     ])
 
     const begin = k.add([
-        k.pos(k.center().add(0, 240)),
+        k.pos(k.center().add(0, 200)),
         k.area({ shape: new k.Rect(k.vec2(0), MAX_WIDTH - 10, k.height() / 2 - 240 - 10) }),
         k.anchor('top')
     ])
@@ -67,7 +67,7 @@ k.scene("start", () => {
     const beginText = begin.add([
         k.text("TAP HERE TO BEGIN", { size: 18 }),
         k.color([85, 85, 85]),
-        k.pos(k.vec2(0, 20)),
+        k.pos(k.vec2(0, 60)),
         k.anchor('top'),
         k.opacity(1),
         { blinkTimer: 0 },

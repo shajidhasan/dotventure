@@ -4,7 +4,9 @@ import { pb } from "../pocketbase"
 k.scene("over", (score, topScores) => {
     k.play('game_over')
 
-    // pb.collection('scores').create({ name: localStorage.getItem('dotname') ?? "Anonymous", score: score });
+    pb.collection('scores').create({ name: localStorage.getItem('dotname') ?? "Anonymous", score: score }).catch((e) => {
+        console.error("Could not upload score!")
+    });
 
     k.add([
         k.text("GAME OVER", { size: 40, align: 'center' }),
