@@ -1,4 +1,4 @@
-import k from "../kaboom"
+import k, { getOffset, getWidth } from "../kaboom"
 import { pb } from "../pocketbase"
 
 k.scene("over", (score, topScores) => {
@@ -33,8 +33,8 @@ k.scene("over", (score, topScores) => {
         topScores.push({ name: localStorage.getItem('dotname') ?? 'Anonymous', score: score, current: true })
         topScores.sort((a, b) => b.score - a.score)
 
-        let left = k.vec2((k.width() - Math.min(k.width(), 400)) / 2 + 40, k.height() / 2 - 100)
-        let right = k.vec2((k.width() - Math.min(k.width(), 400)) / 2 + Math.min(k.width(), 400) - 40, k.height() / 2 - 100)
+        let left = k.vec2(getOffset() + 40, k.height() / 2 - 100)
+        let right = k.vec2(getOffset() + getWidth() - 40, k.height() / 2 - 100)
 
         topScores.forEach(t => {
             k.add([
@@ -57,7 +57,7 @@ k.scene("over", (score, topScores) => {
     } else {
         k.add([
             k.text("NETWORK ISSUES\ncould not load leaderboard", { align: 'center', size: 12 }),
-            k.pos(k.vec2((k.width() - Math.min(k.width(), 400)) / 2 + Math.min(k.width(), 400) / 2, k.height() / 2 + 50)),
+            k.pos(k.vec2(getOffset() + getWidth() / 2, k.height() / 2 + 50)),
             k.color(k.RED),
             k.anchor('center')
         ])

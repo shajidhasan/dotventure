@@ -1,4 +1,4 @@
-import k from "../kaboom"
+import k, { getOffset, getWidth } from "../kaboom"
 
 const control = () => {
     const makeRocketParticles = async (player) => {
@@ -42,7 +42,7 @@ const control = () => {
         },
         update() {
             this.score = Math.max(this.score, k.height() / 2 - this.pos.y)
-            this.camPos = k.vec2((k.width() - Math.min(k.width(), 400)) / 2 + Math.min(k.width(), 400) / 2, -this.score + k.height() / 2)
+            this.camPos = k.vec2(getOffset() + getWidth() / 2, -this.score + k.height() / 2)
         }
     }
 }

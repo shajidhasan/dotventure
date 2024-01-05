@@ -8,9 +8,6 @@ export default defineConfig({
     plugins: [
         VitePWA({
             registerType: 'autoUpdate',
-            devOptions: {
-                enabled: true
-            },
             includeAssets: ['favicon.ico', 'apple-touch-icon-180x180.png'],
             workbox: {
                 globPatterns: ['**/*.{js,css,html,ico,png,svg,ogg,ttf}'],
