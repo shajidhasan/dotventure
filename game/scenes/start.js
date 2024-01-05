@@ -1,4 +1,4 @@
-import k, { MAX_WIDTH } from "../kaboom"
+import k from "../kaboom"
 
 k.scene("start", () => {
     k.setGravity(800)
@@ -60,7 +60,7 @@ k.scene("start", () => {
 
     const begin = k.add([
         k.pos(k.center().add(0, 200)),
-        k.area({ shape: new k.Rect(k.vec2(0), MAX_WIDTH - 10, k.height() / 2 - 240 - 10) }),
+        k.area({ shape: new k.Rect(k.vec2(0), Math.min(k.width(), 450) - 10, k.height() / 2 - 240 - 10) }),
         k.anchor('top')
     ])
 
