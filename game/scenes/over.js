@@ -1,10 +1,10 @@
-import k from "../kaboom"
+import k, { OFFSET, MAX_WIDTH } from "../kaboom"
 import { pb } from "../pocketbase"
 
 k.scene("over", (score, topScores) => {
     k.play('game_over')
 
-    pb.collection('scores').create({ name: localStorage.getItem('dotname') ?? "Anonymous", score: score });
+    // pb.collection('scores').create({ name: localStorage.getItem('dotname') ?? "Anonymous", score: score });
 
     k.add([
         k.text("GAME OVER", { size: 40, align: 'center' }),
@@ -27,30 +27,40 @@ k.scene("over", (score, topScores) => {
         k.anchor('center')
     ])
 
-    topScores.push({ name: localStorage.getItem('dotname') ?? 'Anonymous', score: score, current: true })
-    topScores.sort((a, b) => b.score - a.score)
+    if (topScores) {
+        topScores.push({ name: localStorage.getItem('dotname') ?? 'Anonymous', score: score, current: true })
+        topScores.sort((a, b) => b.score - a.score)
 
-    let left = k.vec2(40, k.height() / 2 - 100)
-    let right = k.vec2(k.width() - 40, k.height() / 2 - 100)
+        let left = k.vec2(OFFSET + 40, k.height() / 2 - 100)
+        let right = k.vec2(OFFSET + MAX_WIDTH - 40, k.height() / 2 - 100)
 
-    topScores.forEach(t => {
+        topScores.forEach(t => {
+            k.add([
+                k.text(t.name, { size: 15, align: 'left' }),
+                k.color(t.current ? [228, 30, 99] : [85, 85, 85]),
+                k.anchor('left'),
+                k.pos(left)
+            ])
+
+            k.add([
+                k.text(t.score, { size: 15, align: 'right' }),
+                k.color(t.current ? [228, 30, 99] : [85, 85, 85]),
+                k.anchor('right'),
+                k.pos(right)
+            ])
+
+            left = left.add(k.vec2(0, 40))
+            right = right.add(k.vec2(0, 40))
+        })
+    } else {
         k.add([
-            text(t.name, { size: 15, align: 'left' }),
-            k.color(t.current ? [228, 30, 99] : [85, 85, 85]),
-            k.anchor('left'),
-            k.pos(left)
+            k.text("NETWORK ISSUES\ncould not load leaderboard", { align: 'center', size: 12 }),
+            k.pos(k.vec2(OFFSET + MAX_WIDTH / 2, k.height() / 2 + 50)),
+            k.color(k.RED),
+            k.anchor('center')
         ])
+    }
 
-        k.add([
-            text(t.score, { size: 15, align: 'right' }),
-            k.color(t.current ? [228, 30, 99] : [85, 85, 85]),
-            k.anchor('right'),
-            k.pos(right)
-        ])
-
-        left = left.add(k.vec2(0, 40))
-        right = right.add(k.vec2(0, 40))
-    })
 
     const button = k.add([
         k.rect(120, 40),

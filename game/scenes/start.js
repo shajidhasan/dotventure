@@ -1,19 +1,19 @@
-import k from "../kaboom"
+import k, { MAX_WIDTH } from "../kaboom"
 
 k.scene("start", () => {
-    k.setGravity(600)
+    k.setGravity(1200)
 
     const dot = k.add([
         k.rect(60, 60),
         k.color([228, 30, 99]),
-        k.pos(k.center().sub(0, 300)),
+        k.pos(k.center().sub(90, 300)),
         k.anchor('center'),
         k.area(),
         k.body()
     ])
 
     const platform = k.add([
-        k.rect(240, 40),
+        k.rect(300, 40),
         k.color([72, 79, 180]),
         k.pos(k.center().sub(0, 100)),
         k.anchor('top'),
@@ -22,9 +22,9 @@ k.scene("start", () => {
     ])
 
     platform.add([
-        k.text("DOTVENTURE", { size: 30 }),
+        k.text("Dot's\nAdventure", { size: 28 }),
         k.color([85, 85, 85]),
-        k.pos(0),
+        k.pos(50, 0),
         k.anchor('bot')
     ])
 
@@ -40,7 +40,7 @@ k.scene("start", () => {
         k.color([228, 30, 99]),
         k.pos(k.center().add(0, 30)),
         k.anchor('center'),
-        area(),
+        k.area(),
     ])
 
     name.onClick(() => {
@@ -52,7 +52,7 @@ k.scene("start", () => {
     })
 
     k.add([
-        k.text("Touch controls:\nBottom half of the screen to move.\nTap on the top half to rocket jump.", { size: 12 }),
+        k.text("Touch and hold on the bottom half of\nthe screen to move.\nTap on the top half to rocket jump.\n\nOn keyboard: arrow keys to move.\nSpacebar to rocket jump.", { size: 12 }),
         k.pos(k.center().add(k.vec2(0, 100))),
         k.anchor('top'),
         k.color([85, 85, 85]),
@@ -60,7 +60,7 @@ k.scene("start", () => {
 
     const begin = k.add([
         k.pos(k.center().add(0, 240)),
-        k.area({ shape: new k.Rect(k.vec2(0), k.width() - 10, k.height() / 2 - 240 - 10) }),
+        k.area({ shape: new k.Rect(k.vec2(0), MAX_WIDTH - 10, k.height() / 2 - 240 - 10) }),
         k.anchor('top')
     ])
 
@@ -74,7 +74,10 @@ k.scene("start", () => {
     ])
 
     begin.onClick(() => {
-        k.go('game')
+        k.go("game")
+    })
+    k.onKeyPress('space', () => {
+        k.go("game")
     })
     beginText.onUpdate(() => {
         beginText.blinkTimer += k.dt();
@@ -84,5 +87,4 @@ k.scene("start", () => {
             beginText.blinkTimer = 0;
         }
     })
-
 })

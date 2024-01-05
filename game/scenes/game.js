@@ -38,6 +38,7 @@ k.scene("game", () => {
         if (mousePosition.y < k.height() / 2) return
         if (mousePosition.x < k.width() / 2) player.moveLeft()
         else player.moveRight()
+
     })
     k.onMousePress(() => {
         const mousePosition = k.mousePos()

@@ -1,10 +1,10 @@
-import k from '../kaboom'
+import k, { MAX_WIDTH, OFFSET } from '../kaboom'
 import { makeBomb } from './bomb'
 
 const makeParticles = (position) => {
     for (let i = 0; i < 10; i++) {
         k.add([
-            k.pos(position.add(k.vec2(randi(-40, 40), 0))),
+            k.pos(position.add(k.vec2(k.randi(-40, 40), 0))),
             k.anchor("center"),
             k.rect(10, 10),
             k.scale(k.rand(0.5, 1)),
@@ -13,7 +13,7 @@ const makeParticles = (position) => {
             k.body(),
             k.lifespan(1, { fade: 0.5 }),
             k.opacity(1),
-            k.move(choose([k.LEFT, k.RIGHT]), k.rand(10, 100)),
+            k.move(k.choose([k.LEFT, k.RIGHT]), k.rand(10, 100)),
             "particle",
         ])
     }
@@ -25,7 +25,8 @@ export const makePlatform = (lastPosition = undefined, noBomb = false, noMove = 
     if (lastPosition) {
         const { x, y } = lastPosition
         const dy = k.randi(80, 120)
-        position = k.vec2(k.randi(Math.max(40, x - 200), Math.min(x + 200, k.width() - 40)), y - dy)
+        const dx = k.randi(-200, 200)
+        position = k.vec2(k.clamp(x + dx, OFFSET + 40, OFFSET + MAX_WIDTH - 40), y - dy)
     }
 
     const platform = k.make([
@@ -48,9 +49,9 @@ export const makePlatform = (lastPosition = undefined, noBomb = false, noMove = 
 
     if (platform.isMoving) {
         platform.onUpdate(() => {
-            if (platform.pos.x + platform.width / 2 >= k.width()) {
+            if (platform.pos.x + platform.width / 2 >= OFFSET + MAX_WIDTH) {
                 platform.direction = 'left'
-            } else if (platform.pos.x - platform.width / 2 <= 0) {
+            } else if (platform.pos.x - platform.width / 2 <= OFFSET) {
                 platform.direction = 'right'
             }
 

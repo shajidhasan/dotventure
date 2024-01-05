@@ -1,4 +1,4 @@
-import k from "../kaboom"
+import k, { MAX_WIDTH, OFFSET } from "../kaboom"
 
 const control = () => {
     const makeRocketParticles = async (player) => {
@@ -13,7 +13,7 @@ const control = () => {
                 k.body(),
                 k.lifespan(0.05, { fade: 0.04 }),
                 k.opacity(1),
-                k.move(choose([k.vec2(-1, k.randi(1, 10)).unit(), k.vec2(1, k.randi(1, 10)).unit()]), k.rand(100, 500)),
+                k.move(k.choose([k.vec2(-1, k.randi(1, 10)).unit(), k.vec2(1, k.randi(1, 10)).unit()]), k.rand(100, 500)),
                 "particle",
             ])
         }
@@ -36,13 +36,13 @@ const control = () => {
             this.jump(1200)
             k.play('rocket')
             for (let i = 0; i < 5; i++) {
-                await wait(0.05)
+                await k.wait(0.05)
                 makeRocketParticles(this)
             }
         },
         update() {
             this.score = Math.max(this.score, k.height() / 2 - this.pos.y)
-            this.camPos = k.vec2(k.width() / 2, -this.score + k.height() / 2)
+            this.camPos = k.vec2(OFFSET + MAX_WIDTH / 2, -this.score + k.height() / 2)
         }
     }
 }

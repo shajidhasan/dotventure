@@ -12,10 +12,10 @@ const makeParticles = (position) => {
             k.body(),
             k.lifespan(1, { fade: 0.5 }),
             k.opacity(1),
-            k.move(choose([k.LEFT, k.RIGHT]), k.rand(200, 800)),
+            k.move(k.choose([k.LEFT, k.RIGHT]), k.rand(200, 800)),
             "particle",
         ])
-        particle.jump(rand(320, 1200))
+        particle.jump(k.rand(320, 1200))
     }
 }
 
@@ -65,7 +65,7 @@ export const makeBomb = () => {
 
         for (let i = 0; i < 2; i++) {
             makeParticles(position)
-            await wait(0.1)
+            await k.wait(0.1)
         }
     })
 
