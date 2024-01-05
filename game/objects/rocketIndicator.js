@@ -22,7 +22,7 @@ const indicator = () => {
 
 export const makeRocketIndicator = () => {
     const rocket = k.make([
-        k.text('↑', { font: 'kitchen_sink', size: 30 }),
+        k.text('↑', { size: 30 }),
         k.color(k.RED),
         k.anchor("topright"),
         k.pos(k.width() - 36, 16),

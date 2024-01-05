@@ -22,21 +22,21 @@ k.scene("start", () => {
     ])
 
     platform.add([
-        k.text("DOTVENTURE", { font: 'kitchen_sink', size: 40 }),
+        k.text("DOTVENTURE", { size: 40 }),
         k.color([85, 85, 85]),
         k.pos(0),
         k.anchor('bot')
     ])
 
     k.add([
-        k.text("Your name:", { font: 'kitchen_sink', size: 14 }),
+        k.text("Your name:", { size: 14 }),
         k.color([85, 85, 85]),
         k.pos(k.center()),
         k.anchor('center')
     ])
 
     const name = k.add([
-        k.text(localStorage.getItem('dotname') ?? "Anonymous", { font: 'kitchen_sink', size: 20 }),
+        k.text(localStorage.getItem('dotname') ?? "Anonymous", { size: 20 }),
         k.color([228, 30, 99]),
         k.pos(k.center().add(0, 30)),
         k.anchor('center'),
@@ -52,7 +52,7 @@ k.scene("start", () => {
     })
 
     k.add([
-        k.text("Touch controls:\nBottom half of the screen to move.\nTap on the top half to rocket jump.", { font: 'kitchen_sink', size: 13.5 }),
+        k.text("Touch controls:\nBottom half of the screen to move.\nTap on the top half to rocket jump.", { size: 13.5 }),
         k.pos(k.center().add(k.vec2(0, 100))),
         k.anchor('top'),
         k.color([85, 85, 85]),
@@ -65,7 +65,7 @@ k.scene("start", () => {
     ])
 
     const beginText = begin.add([
-        k.text("TAP HERE TO BEGIN", { font: 'kitchen_sink', size: 18 }),
+        k.text("TAP HERE TO BEGIN", { size: 18 }),
         k.color([85, 85, 85]),
         k.pos(k.vec2(0, 20)),
         k.anchor('top'),
