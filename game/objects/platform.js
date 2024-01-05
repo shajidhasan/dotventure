@@ -26,7 +26,7 @@ export const makePlatform = (lastPosition = undefined, noBomb = false, noMove = 
         const { x, y } = lastPosition
         const dy = k.randi(80, 120)
         const dx = k.randi(-200, 200)
-        position = k.vec2(k.clamp(x + dx, (k.width() - Math.min(k.width(), 450)) / 2 + 40, (k.width() - Math.min(k.width(), 450)) / 2 + Math.min(k.width(), 450) - 40), y - dy)
+        position = k.vec2(k.clamp(x + dx, (k.width() - Math.min(k.width(), 400)) / 2 + 40, (k.width() - Math.min(k.width(), 400)) / 2 + Math.min(k.width(), 400) - 40), y - dy)
     }
 
     const platform = k.make([
@@ -49,9 +49,9 @@ export const makePlatform = (lastPosition = undefined, noBomb = false, noMove = 
 
     if (platform.isMoving) {
         platform.onUpdate(() => {
-            if (platform.pos.x + platform.width / 2 >= (k.width() - Math.min(k.width(), 450)) / 2 + Math.min(k.width(), 450)) {
+            if (platform.pos.x + platform.width / 2 >= (k.width() - Math.min(k.width(), 400)) / 2 + Math.min(k.width(), 400)) {
                 platform.direction = 'left'
-            } else if (platform.pos.x - platform.width / 2 <= (k.width() - Math.min(k.width(), 450)) / 2) {
+            } else if (platform.pos.x - platform.width / 2 <= (k.width() - Math.min(k.width(), 400)) / 2) {
                 platform.direction = 'right'
             }
 
