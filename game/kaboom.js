@@ -13,7 +13,6 @@ const k = kaboom({
     stretch: false,
     crisp: true,
     font: 'kitchen_sink',
-    pixelDensity: window.devicePixelRatio / 2,
     debug: false,
     width,
     height,
