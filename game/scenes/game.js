@@ -52,6 +52,7 @@ k.scene("game", () => {
 
     pb.collection('scores').getList(1, 7, {
         sort: '-score',
+        filter: 'created >= @todayStart && created < @todayEnd'
     }).then(data => {
         topScorers = data.items
     })

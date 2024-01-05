@@ -21,7 +21,7 @@ k.scene("over", (score, topScores) => {
     ])
 
     k.add([
-        k.text("LEADERBOARD", { size: 14, align: 'center' }),
+        k.text("TOP SCORES TODAY", { size: 14, align: 'center' }),
         k.pos(k.center().sub(k.vec2(0, 140))),
         k.color([85, 85, 85]),
         k.anchor('center')
