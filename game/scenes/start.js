@@ -46,18 +46,23 @@ k.scene("start", () => {
     ])
 
     const name = k.add([
-        k.text(localStorage.getItem('dotname') ?? "Anonymous", { size: 20 }),
-        k.color([228, 30, 99]),
+        k.area({ shape: new k.Rect(k.vec2(0, 0), 300, 100) }),
         k.pos(k.center()),
+        k.anchor('center')
+    ])
+
+    const nameText = name.add([
+        k.text(localStorage.getItem('dotname') ?? "Anonymous", { size: 20 }),
         k.anchor('center'),
-        k.area(),
+        k.pos(0),
+        k.color([228, 30, 99]),
     ])
 
     name.onClick(() => {
         const n = prompt("Enter name: ")
         if (n) {
             localStorage.setItem('dotname', n)
-            name.text = n
+            nameText.text = n
         }
     })
 
