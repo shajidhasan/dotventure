@@ -40,7 +40,7 @@ export default defineConfig({
                     }
                 ],
                 theme_color: '#df1e63',
-                background_color: '#eeeeee',
+                background_color: '#cceaf4',
                 display: "standalone",
                 scope: '/',
                 start_url: "/",
