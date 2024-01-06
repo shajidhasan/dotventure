@@ -1,8 +1,19 @@
 import k, { getOffset, getWidth } from "../kaboom"
+import { makeCloud } from "../objects/cloud"
 import { pb } from "../pocketbase"
 
 k.scene("over", (score, topScores) => {
     k.play('game_over')
+
+    for (let _ = 0; _ < 5; _++) {
+        k.add(makeCloud(k.rand(k.width()), k.rand(k.height())))
+    }
+
+    k.loop(3, () => {
+        if (k.chance(0.7))
+            k.add(makeCloud(null, k.rand(k.camPos().y + k.rand(k.height() / 2) * k.choose([1, -1]))))
+    })
+
 
     pb.collection('scores').create({ name: localStorage.getItem('dotname') ?? "Anonymous", score: score }).catch((e) => {
         console.error("Could not upload score!")

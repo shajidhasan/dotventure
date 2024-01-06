@@ -1,7 +1,17 @@
 import k, { getWidth } from "../kaboom"
+import { makeCloud } from "../objects/cloud"
 
 k.scene("start", () => {
     k.setGravity(800)
+
+    for (let _ = 0; _ < 5; _++) {
+        k.add(makeCloud(k.rand(k.width()), k.rand(k.height())))
+    }
+
+    k.loop(3, () => {
+        if (k.chance(0.7))
+            k.add(makeCloud(null, k.rand(k.camPos().y + k.rand(k.height() / 2) * k.choose([1, -1]))))
+    })
 
     const dot = k.add([
         k.rect(60, 60),

@@ -27,7 +27,7 @@ export const makePlatform = (lastPosition = undefined, noBomb = false, noMove = 
         const dy = k.randi(80, 120)
         // const dx = k.randi(-200, 200)
         // position = k.vec2(k.clamp(x + dx, getOffset() + 40, (k.width() - getWidth()) / 2 + getWidth() - 40), y - dy)
-        position = k.vec2(k.randi(Math.max(getOffset() + 40, x - 200), Math.min(x + 200, getOffset() + k.width() - 40)), y - dy)
+        position = k.vec2(k.randi(Math.max(getOffset() + 40, x - 200), Math.min(x + 200, getOffset() + getWidth() - 40)), y - dy)
     }
 
     const platform = k.make([

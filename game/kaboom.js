@@ -3,7 +3,7 @@ import kaboom from "kaboom"
 const MAX_WIDTH = 400
 
 const k = kaboom({
-    background: [238, 238, 238],
+    background: [204, 234, 244],
     backgroundAudio: true,
     stretch: false,
     crisp: true,
