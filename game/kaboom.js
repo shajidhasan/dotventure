@@ -9,7 +9,7 @@ const k = kaboom({
     crisp: true,
     font: 'kitchen_sink',
     global: false,
-    debug: true,
+    debug: false,
 })
 
 k.volume(0.4)
