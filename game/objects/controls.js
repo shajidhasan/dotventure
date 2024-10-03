@@ -2,7 +2,7 @@ import k from "../kaplay"
 
 export const makeControls = () => {
     let time = 0
-    const mx = 20
+    const mx = 40
     const mb = 100
 
     const left = k.make([
