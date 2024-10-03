@@ -1,4 +1,4 @@
-import k, { getOffset, getWidth } from '../kaboom'
+import k, { getOffset, getWidth } from '../kaplay'
 import { makeBomb } from './bomb'
 
 const makeParticles = (position) => {

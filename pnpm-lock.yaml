@@ -8,6 +8,9 @@ dependencies:
   kaboom:
     specifier: ^3000.1.17
     version: 3000.1.17
+  kaplay:
+    specifier: 3001.0.0-beta.3
+    version: 3001.0.0-beta.3
   pocketbase:
     specifier: ^0.20.1
     version: 0.20.3
@@ -2835,6 +2838,10 @@ packages:
 
   /kaboom@3000.1.17:
     resolution: {integrity: sha512-npAtjGxj9Oj9vLpXfURck9eUPHR2ac1Lhc1bNcZ0NWcs+Lgs40Ty+wjujv1C2DwjWvxaX+3r2G64M35BS/Ry2g==}
+    dev: false
+
+  /kaplay@3001.0.0-beta.3:
+    resolution: {integrity: sha512-IzqK5S/Be3RQmfG9BuJoUobW/GWGk6MypZnBLwtNq7dY4OMoFmqoxnPSamBcyHrWgP4ErbvyrKJxknumyVIi+A==}
     dev: false
 
   /leven@3.1.0:

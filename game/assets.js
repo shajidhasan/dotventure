@@ -1,4 +1,4 @@
-import k from "./kaboom"
+import k from "./kaplay"
 
 import jump from "./assets/sounds/jump.ogg"
 import rocket from "./assets/sounds/rocket.ogg"

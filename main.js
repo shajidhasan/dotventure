@@ -1,4 +1,4 @@
-import k from "./game/kaboom"
+import k from "./game/kaplay"
 import './style.css'
 
 import "./game/assets"

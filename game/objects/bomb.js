@@ -1,4 +1,4 @@
-import k from "../kaboom"
+import k from "../kaplay"
 
 const makeParticles = (position) => {
     for (let i = 0; i < 10; i++) {

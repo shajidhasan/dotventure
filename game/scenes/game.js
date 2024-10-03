@@ -1,4 +1,4 @@
-import k from "../kaboom"
+import k from "../kaplay"
 import { makePlatform } from "../objects/platform"
 import { makePlayer } from "../objects/player"
 import { makeRocketIndicator } from "../objects/rocketIndicator"

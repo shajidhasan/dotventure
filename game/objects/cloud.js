@@ -1,4 +1,4 @@
-import k from "../kaboom";
+import k from "../kaplay";
 
 
 export const makeCloud = (x, y, color) => {

@@ -1,8 +1,8 @@
-import kaboom from "kaboom"
+import kaplay from "kaplay"
 
 const MAX_WIDTH = 400
 
-const k = kaboom({
+const k = kaplay({
     background: [204, 234, 244],
     backgroundAudio: true,
     stretch: false,

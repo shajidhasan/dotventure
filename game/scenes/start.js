@@ -1,4 +1,4 @@
-import k, { getWidth } from "../kaboom"
+import k, { getWidth } from "../kaplay"
 import { makeCloud } from "../objects/cloud"
 
 k.scene("start", () => {
