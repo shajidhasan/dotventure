@@ -5,6 +5,7 @@ import { makeRocketIndicator } from "../objects/rocketIndicator"
 import { makeCloud } from "../objects/cloud"
 import { makeScore } from "../objects/score"
 import { pb } from "../pocketbase"
+import { makeControls } from "../objects/controls"
 
 k.scene("game", () => {
     k.setGravity(1200)
@@ -23,6 +24,10 @@ k.scene("game", () => {
     const player = k.add(makePlayer())
     const score = k.add(makeScore())
     const indicator = k.add(makeRocketIndicator())
+
+    if (k.width() <= 600) {
+        makeControls().forEach(control => k.add(control))
+    }
 
     let lastPlatform = k.add(makePlatform())
 

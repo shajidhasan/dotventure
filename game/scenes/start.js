@@ -1,5 +1,9 @@
 import k, { getWidth } from "../kaplay"
 import { makeCloud } from "../objects/cloud"
+import { makeControls } from "../objects/controls";
+
+
+const desktop = k.width() > 600;
 
 k.scene("start", () => {
     k.setGravity(800)
@@ -67,7 +71,12 @@ k.scene("start", () => {
     })
 
     k.add([
-        k.text("Touch and hold on the bottom half of\nthe screen to move.\nTap on the top half to rocket jump.\n\nOn keyboard: arrow keys to move.\nSpacebar to rocket jump.", { size: 12 }),
+        k.text(
+            desktop ?
+                "LEFT and RIGHT arrow keys to move.\n\nSPACEBAR to rocket jump."
+                :
+                "Tap and hold on-screen arrows to move.\n\nTap on the top half of your screen\nto rocket jump."
+            , { size: 12 }),
         k.pos(k.center().add(k.vec2(0, 100))),
         k.anchor('top'),
         k.color([85, 85, 85]),
@@ -80,7 +89,10 @@ k.scene("start", () => {
     ])
 
     const beginText = begin.add([
-        k.text("TAP HERE TO BEGIN", { size: 18 }),
+        k.text(
+            desktop ?
+                "PRESS SPACEBAR TO BEGIN" : "TAP HERE TO BEGIN"
+            , { size: 18 }),
         k.color([85, 85, 85]),
         k.pos(k.vec2(0, 60)),
         k.anchor('top'),

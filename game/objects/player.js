@@ -73,8 +73,12 @@ export const makePlayer = () => {
             if (col.isBottom()) {
                 const platform = col.target
                 platform.hurt(1)
-                if (platform.hasBomb)
-                    platform.get('bomb')[0].enterState('active')
+
+                if (platform.hasBomb) {
+                    const bomb = platform.get('bomb')[0]
+                    if (bomb.state === 'idle')
+                        bomb.enterState('active')
+                }
             }
         }
     })
