@@ -11,6 +11,7 @@ export default defineConfig({
             includeAssets: ['favicon.ico', 'apple-touch-icon-180x180.png'],
             workbox: {
                 globPatterns: ['**/*.{js,css,html,ico,png,svg,ogg,ttf}'],
+                sourcemap: true
             },
             manifest: {
                 name: "Dot's Adventure",
