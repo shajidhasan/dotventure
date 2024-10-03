@@ -114,4 +114,16 @@ k.scene("start", () => {
             beginText.blinkTimer = 0;
         }
     })
+
+    const github = k.add([
+        k.text("GitHub →", { size: desktop ? 24 : 18 }),
+        k.anchor('topright'),
+        k.color([85, 85, 85]),
+        k.pos(k.width() - 20, 20),
+        k.area(),
+    ])
+
+    github.onClick(() => {
+        window.open('https://github.com/shajidhasan/dotventure', '_blank').focus();
+    })
 })
