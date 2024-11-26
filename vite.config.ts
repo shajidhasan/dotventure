@@ -40,7 +40,7 @@ export default defineConfig({
                         "purpose": "maskable"
                     }
                 ],
-                theme_color: '#df1e63',
+                theme_color: '#cceaf4',
                 background_color: '#cceaf4',
                 display: "standalone",
                 scope: '/',
